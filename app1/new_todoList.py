@@ -31,19 +31,21 @@ while True:
 
         case 'read':
             file = open('src/todos.txt', 'r')
-            todos = file.readlines() # ovo je kao da smo napisali todos = [lista neka]
+            todos = file.readlines() # ovo je kao da smo kreirali listu todos = [lista neka]
             file.close()
 
-            new_todos = []
+            # for item in todos list apply item.strip() and store it in new_todos - called "list comprehension":
+            # new_todos = [item.strip("\n") for item in todos]
 
-            for item in todos:
-                new_item = item.strip("\n")
-                new_todos.append(new_item)
+            # and replace this:
+            # new_todos = []
+            # for item in todos:
+            #     new_item = item.strip("\n")
+            #     new_todos.append(new_item)
 
-            print(f"Ovo printa listu:  {todos}")
             print("List of todos: ")
-            for index, item in enumerate(new_todos): #iterate through that todo list and prints it
-                row = f"{index + 1}. {item.title()}"
+            for index, item in enumerate(todos): #iterate through that todo list and prints it
+                row = f"{index + 1}. {item.title().strip()}" # strip extra rows \n
                 print(row)
 
 
